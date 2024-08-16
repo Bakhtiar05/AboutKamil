@@ -20,29 +20,41 @@ hamburger.addEventListener("click", function () {
 });
 
 
-const contacForm = document.getElementById('kontak-form');
-const loader = document.querySelector(".loader");
+document.getElementById('kontak-form').addEventListener('submit', function (event) {
+  event.preventDefault(); // Mencegah pengiriman form default
 
-loader.style.display = "none";
+  const formData = new FormData(this);
+  const url = this.action;
+  const formMessage = document.querySelector('.form-message');
+  const loader = document.querySelector('.loader');
 
-contacForm.addEventListener("submit", function (e){
-  e.preventDefault();
-  loader.style.display = "block";
-  const url = e.target.action;
-  const formData = new FormData(contacForm);
+  loader.style.display = 'block';
+  formMessage.textContent = ''; // Hapus pesan sebelumnya
 
   fetch(url, {
-    method: "POST",
+    method: 'POST',
     body: formData,
-    mode: "no-cors",
+    headers: {
+      'Accept': 'application/json'
+    }
   })
-  .then(() => {
-    //url thankyou
-    loader.style.display = "none";
-    window.location.href = "/thankyou.html";
+  .then(response => {
+    loader.style.display = 'none'; // Sembunyikan loader setelah respons diterima
+    if (response.ok) {
+      formMessage.textContent = 'Pesan berhasil dikirim. Terima kasih!';
+      formMessage.style.color = 'green'; // Ubah warna pesan sesuai kebutuhan
+    } else {
+      formMessage.textContent = 'Gagal mengirim pesan. Silakan coba lagi.';
+      formMessage.style.color = 'red'; // Ubah warna pesan sesuai kebutuhan
+    }
   })
-  .catch((e) => alert("error occured"));
+  .catch(error => {
+    loader.style.display = 'none'; // Sembunyikan loader jika terjadi kesalahan
+    formMessage.textContent = 'Terjadi kesalahan: ' + error.message;
+    formMessage.style.color = 'red'; // Ubah warna pesan sesuai kebutuhan
+  });
 });
+
 
 
 // document.addEventListener('DOMContentLoaded', function () {
