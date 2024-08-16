@@ -39,7 +39,7 @@ contacForm.addEventListener("submit", function (e){
   .then(() => {
     //url thankyou
     loader.style.display = "none";
-    window.location.href = "thankyou.html";
+    window.location.href = "/thankyou.html";
   })
   .catch((e) => alert("error occured"));
 });
