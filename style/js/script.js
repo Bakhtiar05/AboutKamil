@@ -20,29 +20,37 @@ hamburger.addEventListener("click", function () {
 });
 
 
-const contacForm = document.getElementById('kontak-form');
+const contactForm = document.getElementById('kontak-form');
 const loader = document.querySelector(".loader");
 
 loader.style.display = "none";
 
-contacForm.addEventListener("submit", function (e){
+contactForm.addEventListener("submit", function (e) {
   e.preventDefault();
   loader.style.display = "block";
   const url = e.target.action;
-  const formData = new FormData(contacForm);
+  const formData = new FormData(contactForm);
 
   fetch(url, {
     method: "POST",
     body: formData,
-    mode: "no-cors",
+    // mode: "cors" // Hapus atau gunakan mode ini jika diperlukan
   })
-  .then(() => {
-    //url thankyou
+  .then(response => {
+    if (response.ok) {
+      // Redirect ke halaman thankyou
+      loader.style.display = "none";
+      window.location.href = "https://bakhtiar05.github.io/AboutKamil/thankyou.html";
+    } else {
+      throw new Error("Form submission failed.");
+    }
+  })
+  .catch((error) => {
     loader.style.display = "none";
-    window.location.href = "/thankyou.html";
-  })
-  .catch((e) => alert("error occured"));
+    alert("Error occurred: " + error.message);
+  });
 });
+
 
 
 // document.addEventListener('DOMContentLoaded', function () {
