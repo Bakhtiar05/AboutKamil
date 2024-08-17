@@ -704,6 +704,10 @@ video {
   margin-top: 0.5rem;
 }
 
+.mt-4 {
+  margin-top: 1rem;
+}
+
 .mt-5 {
   margin-top: 1.25rem;
 }
@@ -782,6 +786,10 @@ video {
 
 .max-w-xl {
   max-width: 36rem;
+}
+
+.grow {
+  flex-grow: 1;
 }
 
 .origin-bottom-left {
@@ -1241,6 +1249,7 @@ body {
 
 .loader {
   border-top-color: #ef4444;
+  display: none;
   animation: spinner 1.5s linear infinite;
 }
 
@@ -1256,6 +1265,13 @@ body {
 
 .zoomed-in {
   transform: scale(1.5);
+}
+
+.indent {
+  text-indent: 3em;
+  text-align: justify;
+  -webkit-hyphens: auto;
+          hyphens: auto;
 }
 
 .hover\:border-primary:hover {
@@ -1483,3 +1499,4 @@ body {
     line-height: 2rem;
   }
 }
+

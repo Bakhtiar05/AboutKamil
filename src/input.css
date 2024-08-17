@@ -32,6 +32,7 @@ body {
 
 .loader {
   border-top-color: #ef4444;
+  display: none;
   -webkit-animation: spinner 1.5s linear infinite;
   animation: spinner 1.5s linear infinite;
 }
@@ -57,3 +58,10 @@ body {
 .zoomed-in {
     transform: scale(1.5);
 }
+
+.indent {
+    text-indent: 3em;
+    text-align: justify;
+    hyphens: auto;
+}
+

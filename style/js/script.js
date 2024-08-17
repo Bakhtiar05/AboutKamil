@@ -41,7 +41,7 @@ document.getElementById('kontak-form').addEventListener('submit', function (even
   .then(response => {
     loader.style.display = 'none'; // Sembunyikan loader setelah respons diterima
     if (response.ok) {
-      formMessage.textContent = 'Pesan berhasil dikirim. Terima kasih!';
+      formMessage.innerHTML = 'Pesan berhasil dikirim. Terima kasih 🙌<br>Refresh halaman ini jika anda mengirim pesan lain nya 😁';
       formMessage.style.color = 'green'; // Ubah warna pesan sesuai kebutuhan
     } else {
       formMessage.textContent = 'Gagal mengirim pesan. Silakan coba lagi.';
@@ -54,35 +54,3 @@ document.getElementById('kontak-form').addEventListener('submit', function (even
     formMessage.style.color = 'red'; // Ubah warna pesan sesuai kebutuhan
   });
 });
-
-
-
-// document.addEventListener('DOMContentLoaded', function () {
-//     const images = document.querySelectorAll('.zoomable-image');
-//     const blurBackground = document.getElementById('blur-background');
-//     let currentIndex = 0;
-
-//     function showImage(index) {
-//         images.forEach((img, i) => {
-//             img.classList.toggle('hidden', i !== index);
-//         });
-//     }
-
-//     document.getElementById('image-slider').addEventListener('click', function () {
-//         const currentImage = images[currentIndex];
-//         currentImage.classList.toggle('zoomed-in');
-//         blurBackground.classList.toggle('hidden');
-//     });
-
-//     document.getElementById('next-btn').addEventListener('click', function () {
-//         currentIndex = (currentIndex + 1) % images.length;
-//         showImage(currentIndex);
-//     });
-
-//     document.getElementById('prev-btn').addEventListener('click', function () {
-//         currentIndex = (currentIndex - 1 + images.length) % images.length;
-//         showImage(currentIndex);
-//     });
-
-//     showImage(currentIndex);
-// });
